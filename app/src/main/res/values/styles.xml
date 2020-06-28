@@ -1,0 +1,211 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="IPL">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+    </style>
+
+    <style name="ViewHeight">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorGray</item>
+    </style>
+
+    <style name="ViewHeightWhite">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+    <style name="ViewWidth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorGray</item>
+    </style>
+
+
+    <style name="ViewWidthTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="viewHeightTheme">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="NoDataTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:text">@string/no_internet_connection</item>
+        <item name="android:clickable">false</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">8sp</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+    </style>
+
+
+    <style name="EditTextTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/colorBlack</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+    </style>
+
+    <style name="TextViewTitleCenter">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:clickable">false</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:padding">8sp</item>
+
+    </style>
+
+    <style name="EditTextNotEditable">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:theme">@style/EditTextTheme</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:clickable">false</item>
+
+    </style>
+
+    <style name="SpinnerCustom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+
+    </style>
+
+    <style name="EditTextNumeric">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:theme">@style/EditTextTheme</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+    </style>
+
+    <style name="EditTextRegisterPage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:theme">@style/EditTextTheme</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:inputType">textNoSuggestions|textCapSentences</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+    </style>
+
+    <style name="NonEditable">
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:editable">false</item>
+        <item name="android:cursorVisible">false</item>
+
+    </style>
+
+    <style name="BoldTop">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@drawable/shadow_login_layout</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/app_name</item>
+    </style>
+
+
+    <style name="BoldBoth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@drawable/shadow_login_layout</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/app_name</item>
+    </style>
+
+    <style name="BoldBottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/shadow_login_layout</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/app_name</item>
+    </style>
+
+</resources>

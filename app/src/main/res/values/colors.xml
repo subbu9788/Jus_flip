@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorDarkGreen">#27AC05</color>
+    <color name="colorDialogTrans">#00FFFFFF</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorToast">#27AC05</color>
+    <color name="colorBlue">#1159D8</color>
+    <color name="colorGreenLight">#08C708</color>
+    <color name="colorRed">#c12a2a</color>
+    <color name="colorGray">#646464</color>
+    <color name="colorRejected">#FF1515</color>
+    <color name="colorHint">#AAAAAA</color>
+
+</resources>

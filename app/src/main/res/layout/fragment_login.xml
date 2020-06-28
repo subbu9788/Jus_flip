@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginSnackView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorRejected">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shadow_login_layout"
+        android:padding="16dp"
+        android:src="@drawable/logo"
+        android:text="Court"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="32sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/layOfCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:padding="16dp"
+        android:text="Court"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="32sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/layOfCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layOfCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layOfLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/IPL"
+                    android:textColorHint="#DBD7D7">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtEmailID"
+                        style="@style/EditTextRegisterPage"
+                        android:fontFamily="@font/roboto_slab"
+                        android:hint="Enter Email ID"
+                        android:inputType="textEmailAddress"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        app:backgroundTint="@color/colorBlack" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/IPL"
+                    android:textColorHint="#DBD7D7"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassword"
+                        style="@style/EditTextRegisterPage"
+                        android:fontFamily="@font/roboto_slab"
+                        android:hint="Enter Password"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        app:backgroundTint="@color/colorBlack" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorBlack"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:padding="24dp"
+                android:text="Login"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:background="@drawable/edittext_boarder_with_ripple"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Create New"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/layOfCard"
+        app:layout_constraintVertical_bias="0.209"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:id="@+id/txtResetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="Reset Password?"
+            android:textColor="@color/colorWhite"
+            android:visibility="gone" />
+
+        <View
+            style="@style/ViewHeightWhite"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtForgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?selectableItemBackground"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="Forgot Password?"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

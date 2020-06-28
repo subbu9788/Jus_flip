@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/registerSnackView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layOfActions"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtDistrict"
+                        style="@style/EditTextNotEditable"
+                        android:hint="Select District"
+                        android:text=" " />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spDistrict"
+                    style="@style/SpinnerCustom"
+                    android:entries="@array/district" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/regEdtOfficeName"
+                        style="@style/EditTextNotEditable"
+                        android:hint="Select Area Officer"
+                        android:text=" " />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/regSpOfficeName"
+                    style="@style/SpinnerCustom"
+                    android:entries="@array/district" />
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/IPL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegAdvocateName"
+                    style="@style/EditTextRegisterPage"
+                    android:hint="Advocate Name"
+                    android:text="" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegEntlNumber"
+                    style="@style/EditTextRegisterPage"
+                    android:hint="Enrolment Number"
+                    android:text="" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegEmailId"
+                    style="@style/EditTextRegisterPage"
+                    android:hint="Email ID"
+                    android:inputType="textEmailAddress"
+                    android:text="" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRegPhoneNumber"
+                    style="@style/EditTextNumeric"
+                    android:hint="Phone Number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:text="" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regEdtAddress"
+                    style="@style/EditTextRegisterPage"
+                    android:hint="Address"
+                    android:imeOptions="normal"
+                    android:inputType="textPostalAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regEdtDOB"
+                    style="@style/EditTextNotEditable"
+                    android:hint="Date Of Birth" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regAgentNumberCode"
+                    style="@style/EditTextRegisterPage"
+                    android:hint="Agent Number Code" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chAgree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text=" I Accept to the Terms &amp; Conditions" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/layOfActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/submit_cancel_horizontal_view" />
+    </LinearLayout>
+</RelativeLayout>

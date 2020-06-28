@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/colorRejected"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/login_image_bgm"
+        android:rotation="45">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:elevation="8dp"
+            android:padding="8dp"
+            android:rotation="-45"
+            android:src="@drawable/logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/login_bgm"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@null"
+            android:fontFamily="@font/roboto_slab"
+            android:hint="User Name"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:textFontWeight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="5.5"
+            android:background="@drawable/login_image_bgm"
+            android:elevation="8dp"
+            android:rotation="45">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="end|center"
+                android:elevation="8dp"
+                android:padding="4dp"
+                android:rotation="-45"
+                android:src="@drawable/logo"
+                android:textFontWeight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/login_bgm"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@null"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:hint="Password"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:textFontWeight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="5.5"
+            android:background="@drawable/login_image_bgm"
+            android:elevation="8dp"
+            android:rotation="45">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="end|center"
+                android:elevation="8dp"
+                android:padding="4dp"
+                android:rotation="-45"
+                android:src="@drawable/logo"
+                android:textFontWeight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/login_bgm"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:padding="16dp"
+            android:text="New User Signup"
+            android:textColor="@color/colorPrimaryDark"
+            android:textFontWeight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="end|center"
+            android:layout_weight="1"
+            android:background="@drawable/login_btn_bgm"
+            android:drawableEnd="@drawable/ic_arrow_forward_white"
+            android:elevation="8dp"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:padding="16dp"
+            android:text="Login"
+            android:textColor="@color/colorWhite"
+            android:textFontWeight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:text="Forgot Password?"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>
