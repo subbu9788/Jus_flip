@@ -15,6 +15,7 @@ import com.be.positive.utils.NonSwipeableViewPager
 
 class ProductModelFragment : BaseFragment() {
 
+
     private lateinit var galleryViewModel: ProductModelViewModel
 
     override fun onCreateView(
