@@ -13,11 +13,12 @@ interface APIInterface {
      * Passed Only Values like username,mobilenumber ,password ad etc
      */
 
-    @POST("{path}")
+    //@POST("{path}")
+    @POST("index/")
     fun getSomething(
-        @Path(
-            "path", encoded = true
-        ) path: String, @Body map: HashMap<String, String>
+        /*@Path(
+            "path", encoded = true  ) path: String*/
+        @Query("type") type: String, @Body map: HashMap<String, String>
     ): Call<ResponseBody>
 
 
@@ -41,7 +42,6 @@ interface APIInterface {
         @Path("path") path: String, @PartMap imgMap: HashMap<String, Any>, @Part part: ArrayList<MultipartBody.Part>, @Part partFMBMap: ArrayList<MultipartBody.Part>,
         @Part partLeaseMap: ArrayList<MultipartBody.Part>
     ): Call<ResponseBody>
-
 
     @GET
     @Streaming

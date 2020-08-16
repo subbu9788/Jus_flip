@@ -10,9 +10,7 @@ import com.kirana.merchant.R
 class ItemCompleted(val activity: FragmentActivity, val listOfGrids: Int) :
     RecyclerView.Adapter<ItemCompleted.ViewHolderProducts>() {
 
-    class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderProducts {
         return ViewHolderProducts(

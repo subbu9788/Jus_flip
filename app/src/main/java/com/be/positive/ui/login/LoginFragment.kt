@@ -1,23 +1,16 @@
 package com.be.positive.ui.login
 
+
 import android.app.Dialog
 import android.os.Bundle
 import android.text.InputType
-import androidx.fragment.app.Fragment
-import okhttp3.ResponseBody
-import retrofit2.Response
 import android.text.method.PasswordTransformationMethod
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-
-
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
-import com.be.positive.utils.Validator.Companion.validateLogin
-import com.be.positive.utils.Validator.Companion.validateResetPassword
-
-import com.google.gson.Gson
-import com.kirana.merchant.R
 import com.be.positive.api.APIConnector
 import com.be.positive.api.ParamAPI
 import com.be.positive.api.ParamAPI.Companion.FORGOT_PASSWORD
@@ -26,17 +19,22 @@ import com.be.positive.api.ParamAPI.Companion.RESET_PASSWORD
 import com.be.positive.api.ParamKey
 import com.be.positive.api.ReadWriteAPI
 import com.be.positive.model.ModelSuccess
-import com.be.positive.model.login.ModelLoginSuccess
+import com.be.positive.model.login.ModelLogin
 import com.be.positive.ui.splash.SplashFragment
 import com.be.positive.utils.MessageUtils
 import com.be.positive.utils.SessionManager
 import com.be.positive.utils.UiUtils
 import com.be.positive.utils.Utils
+import com.be.positive.utils.Validator.Companion.validateLogin
+import com.be.positive.utils.Validator.Companion.validateResetPassword
+import com.google.gson.Gson
+import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.dialog_reset_password.*
 import kotlinx.android.synthetic.main.dialog_title.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.submit_cancel_horizontal_view.*
-import java.lang.Exception
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 
 class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
@@ -88,19 +86,18 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
 */
 
         btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboard_after_login)
-            /*val mobileNumber = edtEmailID.text.toString().trim()
+            //findNavController().navigate(R.id.action_dashboard_after_login)
+            val mobileNumber = edtEmailID.text.toString().trim()
             val password = edtPassword.text.toString().trim()
-            val map = HashMap<String, String>()
-            map[ParamKey.USER_NAME] = mobileNumber
+
+            var map = HashMap<String, String>()
+            map = Utils.getMapDefaultValues(requireActivity())
+            map[ParamKey.MOBILE_NUMBER] = mobileNumber
             map[ParamKey.PASSWORD] = password
-            map[ParamKey.FIREBASE_TOKEN] = token
 
             if (validateLogin(this, loginSnackView, map)) {
-                APIConnector.callBasic(activity!!, map, apiReadWrite!!, LOGIN)
-                *//*sessionMananger!!.createLoginSession("Subbu")
-                findNavController().navigate(R.id.action_home_after_login)*//*
-            }*/
+                APIConnector.callBasic(requireActivity(), map, apiReadWrite!!, LOGIN)
+            }
 
         }
         txtForgotPassword.setOnClickListener {
@@ -128,7 +125,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
 
     private fun showForgotPassword() {
 
-        dialog = Dialog(activity!!)
+        dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.dialog_reset_password)
         dialog.message_title_permission.text = "Forgot Password"
         dialog.iplConfirmPassword.visibility = View.GONE
@@ -151,7 +148,12 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                     if (isValidEmail) {
                         val map = HashMap<String, String>()
                         map[ParamKey.USER_NAME] = email
-                        APIConnector.callBasic(activity!!, map, this, ParamAPI.FORGOT_PASSWORD)
+                        APIConnector.callBasic(
+                            requireActivity(),
+                            map,
+                            this,
+                            ParamAPI.FORGOT_PASSWORD
+                        )
                     } else {
                         showSnackView("Enter Valid Email ID", dialog.dialogSnackView)
                     }
@@ -169,7 +171,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
      * User Will reset password with our Current Password
      */
     private fun showResetPassword() {
-        dialog = Dialog(activity!!)
+        dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.dialog_reset_password)
         dialog.show()
         dialog.btnSubmitInHorizontal.text = "Reset"
@@ -189,8 +191,8 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                 map[ParamKey.CONFIRM_PASSWORD] = confirmPassword
                 map[ParamKey.USER_ID] = SessionManager.getObject(activity).id.toString()
 
-                if (validateResetPassword(activity!!, dialog.dialogSnackView, map)) {
-                    APIConnector.callBasic(activity!!, map, this, RESET_PASSWORD)
+                if (validateResetPassword(requireActivity(), dialog.dialogSnackView, map)) {
+                    APIConnector.callBasic(requireActivity(), map, this, RESET_PASSWORD)
                 }
 
 
@@ -204,7 +206,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
 
     override fun showSnackView(message: String, view: View) {
         MessageUtils.dismissSnackBar(SplashFragment.snackbar)
-        SplashFragment.snackbar = MessageUtils.showSnackBar(activity!!, view, message)
+        SplashFragment.snackbar = MessageUtils.showSnackBar(requireActivity(), view, message)
     }
 
 
@@ -215,13 +217,12 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                     val modelSuccess =
                         Gson().fromJson(
                             responseBody.body()?.string(),
-                            ModelLoginSuccess::class.java
+                            ModelLogin::class.java
                         )
                     if (modelSuccess != null) {
                         if (modelSuccess.status!!) {
                             sessionMananger!!.createLoginSession(
-                                modelSuccess.data!!.userdetails,
-                                modelSuccess.subscription!!
+                                modelSuccess.userDetails
                             )
                             findNavController().navigate(R.id.action_dashboard_after_login)
                         } else {
@@ -233,7 +234,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                         }
                     } else {
                         showSnackView(
-                            activity!!.getString(R.string.something_went_wrong),
+                            requireActivity().getString(R.string.something_went_wrong),
                             loginSnackView
                         )
                     }
@@ -248,7 +249,11 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                 if (modelSuccess != null) {
                     if (modelSuccess.status!!) {
                         MessageUtils.dismissDialog(dialog)
-                        MessageUtils.showToastMessage(activity!!, modelSuccess.message, false)
+                        MessageUtils.showToastMessage(
+                            requireActivity(),
+                            modelSuccess.message,
+                            false
+                        )
                     } else {
                         showSnackView(
                             modelSuccess.message.toString(),
@@ -258,7 +263,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                     }
                 } else {
                     showSnackView(
-                        activity!!.getString(R.string.something_went_wrong),
+                        requireActivity().getString(R.string.something_went_wrong),
                         dialog.dialogSnackView
                     )
 
@@ -270,7 +275,11 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                 if (modelSuccess != null) {
                     if (modelSuccess.status!!) {
                         MessageUtils.dismissDialog(dialog)
-                        MessageUtils.showToastMessage(activity!!, modelSuccess.message, false)
+                        MessageUtils.showToastMessage(
+                            requireActivity(),
+                            modelSuccess.message,
+                            false
+                        )
                     } else {
                         showSnackView(
                             modelSuccess.message.toString(),
@@ -280,7 +289,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
                     }
                 } else {
                     showSnackView(
-                        activity!!.getString(R.string.something_went_wrong),
+                        requireActivity().getString(R.string.something_went_wrong),
                         dialog.dialogSnackView
                     )
 

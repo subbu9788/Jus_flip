@@ -14,12 +14,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-
 import com.be.positive.ui.splash.SplashFragment.Companion.snackbar
-import com.be.positive.utils.UiUtils
-import com.be.positive.utils.permissions.CallbackPermission
 import com.be.positive.utils.LocaleHelper
 import com.be.positive.utils.MessageUtils
+import com.be.positive.utils.UiUtils
+import com.be.positive.utils.permissions.CallbackPermission
 import com.kirana.merchant.R
 
 
@@ -86,9 +85,11 @@ open class BaseActivity : AppCompatActivity(), UiUtils {
                     }
                 } else {
                     if (callbackPermission != null) {
-                        callbackPermission!!.onError(getString(
-                            R.string.something_went_wrong
-                        ), "")
+                        callbackPermission!!.onError(
+                            getString(
+                                R.string.something_went_wrong
+                            ), ""
+                        )
                     }
                 }
             }

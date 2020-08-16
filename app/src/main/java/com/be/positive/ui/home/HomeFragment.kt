@@ -8,12 +8,30 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.be.positive.BaseFragment
 import com.be.positive.MainActivity
 import com.be.positive.adapter.ItemProductList
-import com.be.positive.model.home.ModelHomeGrid
+import com.be.positive.api.APIConnector
+import com.be.positive.api.ParamAPI
+import com.be.positive.api.ReadWriteAPI
+import com.be.positive.model.ModelCategoryList
+import com.be.positive.utils.Utils
+import com.google.gson.Gson
 import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.fragment_home.*
+import okhttp3.ResponseBody
+import retrofit2.Response
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), ReadWriteAPI {
 
+    companion object {
+        var categoryName = ""
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        text_home.visibility = View.GONE
+        val map = Utils.getMapDefaultValues(requireActivity())
+        APIConnector.callBasic(requireActivity(), map, this, ParamAPI.CATEGORY_LIST)
+        rcyHomeProductList.layoutManager = GridLayoutManager(activity, 3)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,35 +47,40 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun getShowHomeToolbar(): Boolean {
-
         return false
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        text_home.visibility = View.GONE
-        rcyHomeProductList.layoutManager = GridLayoutManager(activity, 3)
+    override fun onResponseSuccess(responseBody: Response<ResponseBody>, api: String) {
+        val modelSuccess =
+            Gson().fromJson(responseBody.body()?.string(), ModelCategoryList::class.java)
+        if (modelSuccess != null) {
+            if (modelSuccess.status!!) {
+                if (modelSuccess.details.size != 0) {
+                    text_home.visibility = View.GONE
+                    rcyHomeProductList.visibility = View.VISIBLE
+                    //rcyHomeProductList.layoutManager = LinearLayoutManager(requireActivity())
+                    rcyHomeProductList.layoutManager = GridLayoutManager(activity, 3)
+                    rcyHomeProductList.adapter =
+                        ItemProductList(requireActivity(), modelSuccess.details)
+                } else {
+                    text_home.visibility = View.VISIBLE
+                    rcyHomeProductList.visibility = View.GONE
+                }
+            } else {
+                text_home.visibility = View.VISIBLE
+                text_home.text = modelSuccess.message.toString()
+                rcyHomeProductList.visibility = View.GONE
+            }
+        } else {
+            text_home.visibility = View.VISIBLE
+            text_home.text = getString(R.string.something_went_wrong)
+            rcyHomeProductList.visibility = View.GONE
+        }
+    }
 
-        val listOfGrids = ArrayList<ModelHomeGrid>()
-        var modelHomeGrid = ModelHomeGrid("A/C", R.drawable.l_samsung)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("WASHING MACHINE", R.drawable.l_sony)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("LAPTOP", R.drawable.l_nokia)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("DESKTOP", R.drawable.l_voltas)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("ELECTONICS", R.drawable.l_mi)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("MOBILE", R.drawable.l_moto)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("FAN", R.drawable.l_havells)
-        listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("OTHERS", R.drawable.l_lloyd)
-        listOfGrids.add(modelHomeGrid)
-
-        rcyHomeProductList.adapter = ItemProductList(requireActivity(), listOfGrids)
-        rcyHomeProductList.visibility = View.VISIBLE
-
+    override fun onResponseFailure(message: String, api: String) {
+        text_home.visibility = View.VISIBLE
+        text_home.text = message
+        rcyHomeProductList.visibility = View.GONE
     }
 }

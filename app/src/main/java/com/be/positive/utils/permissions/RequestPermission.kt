@@ -8,9 +8,9 @@ import android.provider.MediaStore
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import androidx.core.app.ActivityCompat
 import com.be.positive.BaseActivity
 import com.kirana.merchant.R
 

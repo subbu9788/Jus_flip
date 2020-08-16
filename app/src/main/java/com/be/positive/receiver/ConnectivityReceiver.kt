@@ -3,9 +3,8 @@ package com.be.positive.receiver
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
-
-import android.net.ConnectivityManager
 import android.content.Intent
+import android.net.ConnectivityManager
 import com.be.positive.MyApplication.Companion.getInstance
 import com.be.positive.intefaceUtils.ConnectivityReceiverListener
 

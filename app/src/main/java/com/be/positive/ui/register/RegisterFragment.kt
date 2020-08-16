@@ -2,19 +2,23 @@ package com.be.positive.ui.register
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.be.positive.BaseFragment
 import com.be.positive.MainActivity
+import com.be.positive.api.APIConnector
+import com.be.positive.api.ParamAPI
+import com.be.positive.api.ParamKey
 import com.be.positive.api.ReadWriteAPI
-import com.be.positive.model.login.ModelLoginSuccess
+import com.be.positive.model.ModelSuccess
 import com.be.positive.ui.splash.SplashFragment.Companion.snackbar
 import com.be.positive.utils.MessageUtils
 import com.be.positive.utils.SessionManager
 import com.be.positive.utils.Utils
-import com.be.positive.utils.Utils.Companion.DATE_PREFIX
+import com.be.positive.utils.Validator.Companion.validateRegister
 import com.google.gson.Gson
 import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -41,45 +45,47 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sessionMananger = SessionManager(activity!!)
+        sessionMananger = SessionManager(requireActivity())
         readWriteAPI = this
 
         btnSubmitInHorizontal.text = getString(R.string.register)
         Utils.checkMobileNumber(edtRegPhoneNumber)
-
-        regEdtOfficeName.setOnClickListener { regSpOfficeName.performClick() }
-        edtDistrict.setOnClickListener { spDistrict.performClick() }
-
+        regPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+        regConfirmPassword.transformationMethod = PasswordTransformationMethod.getInstance()
         btnSubmitInHorizontal.setOnClickListener {
-            /* val map = HashMap<String, String>()
-             map[ParamKey.ADVOCATE_NAME] = edtRegAdvocateName.text.toString()
-             map[ParamKey.MOBILE_NUMBER] = edtRegPhoneNumber.text.toString()
-             map[ParamKey.EMAIL] = edtRegEmailId.text.toString()
-             map[ParamKey.ENTROLMENT_NUMBER] = edtRegEntlNumber.text.toString()
-             map[ParamKey.ADDRESS] = regEdtAddress.text.toString()
-             map[ParamKey.DATE_OF_BIRTH] = regEdtDOB.text.toString()
-             map[ParamKey.AGENT_NUMBER_CODE] = regAgentNumberCode.text.toString()
+            val map = HashMap<String, String>()
 
-             if (validateRegister(this, registerSnackView, map)) {
-                 if (chAgree.isChecked) {
-                     APIConnector.callBasic(activity!!, map, readWriteAPI!!, ParamAPI.REGISTER)
-                 } else {
-                     showSnackView("Please Confirm Our Terms & Conditions", registerSnackView)
-                 }
-             }*/
+            map[ParamKey.NAME] = edtRegName.text.toString()
+            map[ParamKey.MOBILE_NUMBER] = edtRegPhoneNumber.text.toString()
+            map[ParamKey.EMAIL] = edtRegEmailId.text.toString()
+            map[ParamKey.ADDRESS] = regEdtAddress.text.toString()
+            map[ParamKey.PASSWORD] = regPassword.text.toString()
+            map[ParamKey.CONFIRM_PASSWORD] = regConfirmPassword.text.toString()
+            map[ParamKey.PINCODE] = regPincide.text.toString()
+
+            if (validateRegister(this, registerSnackView, map)) {
+
+                APIConnector.callBasic(
+                    requireActivity(),
+                    map,
+                    readWriteAPI!!,
+                    ParamAPI.REGISTER
+                )
+            }
         }
 
         btnCancelInHorizontal.setOnClickListener {
             findNavController().popBackStack()
         }
 
+        /*
         regEdtDOB.setOnClickListener {
             try {
                 showDateSelection()
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
-        }
+        }*/
     }
 
     private fun showDateSelection() {
@@ -90,17 +96,21 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
 
 
         val datePickerDialog = DatePickerDialog(
-            activity!!, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                regEdtDOB.setText(
+            requireActivity(),
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                /*regEdtDOB.setText(
                     Utils.convertDateFormat(
                         dayOfMonth,
                         monthOfYear,
                         year,
                         DATE_PREFIX
                     )
-                )
+                )*/
                 //regEdtDOB.setText(dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-            }, mYear, mMonth, mDay
+            },
+            mYear,
+            mMonth,
+            mDay
         )
 
 
@@ -114,18 +124,11 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
     override fun onResponseSuccess(responseBody: Response<ResponseBody>, api: String) {
         try {
             val modelSuccess =
-                Gson().fromJson(responseBody.body()?.string(), ModelLoginSuccess::class.java)
+                Gson().fromJson(responseBody.body()?.string(), ModelSuccess::class.java)
             if (modelSuccess != null) {
                 if (modelSuccess.status!!) {
-                    /*MessageUtils.showToastMessage(activity!!, modelSuccess.message, false)
-                    findNavController().popBackStack()*/
-                    sessionMananger!!.createLoginSession(
-                        modelSuccess.data!!.userdetails,
-                        modelSuccess.subscription!!
-                    )
-                    MessageUtils.showToastMessage(activity!!, modelSuccess.message, false)
+                    MessageUtils.showToastMessage(requireActivity(), modelSuccess.message, false)
                     findNavController().popBackStack()
-                    //findNavController().navigate(R.id.action_home_after_login)
                 } else {
                     showSnackView(
                         modelSuccess.message.toString(),
@@ -135,7 +138,7 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
                 }
             } else {
                 showSnackView(
-                    activity!!.getString(R.string.something_went_wrong),
+                    requireActivity().getString(R.string.something_went_wrong),
                     registerSnackView
                 )
 
@@ -166,6 +169,6 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
 
     override fun showSnackView(message: String, view: View) {
         MessageUtils.dismissSnackBar(snackbar)
-        snackbar = MessageUtils.showSnackBar(activity!!, view, message)
+        snackbar = MessageUtils.showSnackBar(requireActivity(), view, message)
     }
 }

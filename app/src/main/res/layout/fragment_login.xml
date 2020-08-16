@@ -87,8 +87,9 @@
                         android:id="@+id/edtEmailID"
                         style="@style/EditTextRegisterPage"
                         android:fontFamily="@font/roboto_slab"
-                        android:hint="Enter Email ID"
-                        android:inputType="textEmailAddress"
+                        android:hint="Mobile Number"
+                        android:inputType="number"
+                        android:maxLength="10"
                         android:text=""
                         android:textColor="@color/colorBlack"
                         app:backgroundTint="@color/colorBlack" />

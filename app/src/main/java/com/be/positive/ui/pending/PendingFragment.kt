@@ -18,7 +18,7 @@ class PendingFragment : BaseFragment(), ReadWriteAPI {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rcyPendingView.layoutManager = LinearLayoutManager(requireActivity())
-        rcyPendingView.adapter=ItemProcessing(requireActivity(),10)
+        rcyPendingView.adapter = ItemProcessing(requireActivity(), 10)
     }
 
     override fun onCreateView(

@@ -4,16 +4,13 @@ import android.app.Dialog
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import com.be.positive.receiver.ConnectivityReceiver
-
 import com.be.positive.utils.MessageUtils
 import com.be.positive.utils.Utils.Companion.instanceOfRetrofit
-
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
 
 class APIConnector {
@@ -33,7 +30,7 @@ class APIConnector {
             if (ConnectivityReceiver.isConnected()) {
                 val dialog = MessageUtils.showDialog(activity)
                 try {
-                    instanceOfRetrofit().getSomething(api, map)
+                    instanceOfRetrofit().getSomething("$api", map)
                         .enqueue(object : Callback<ResponseBody> {
                             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                                 Log.e("RESPONSE_FAILURE====>", "" + t.message)

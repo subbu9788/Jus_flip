@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="?selectableItemBackground">
+    android:background="@color/colorWhite">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:background="@color/colorWhite"
-        android:scaleType="fitXY"
         android:src="@drawable/l_sony"
         app:layout_constraintBottom_toTopOf="@+id/itemProductName"
         app:layout_constraintEnd_toEndOf="parent"

@@ -34,12 +34,6 @@ class ProfileFragment : BaseFragment(), ReadWriteAPI {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //getProfile()
-
-    }
-
     private fun getProfile() {
 
         val map = HashMap<String, String>()

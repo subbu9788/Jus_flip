@@ -7,58 +7,33 @@ import android.content.SharedPreferences.Editor;
 
 import androidx.fragment.app.FragmentActivity;
 
-
-import com.google.gson.Gson;
 import com.be.positive.MainActivity;
 import com.be.positive.model.login.UserDetails;
+import com.google.gson.Gson;
 
 
 public class SessionManager {
 
-    private SharedPreferences pref;
-    private Editor editor;
-
-
-    private FragmentActivity context;
-    private int PRIVATE_MODE = 0;
-
     public static String KEY_ID = "key_id";
-    private static String KEY_USERNAME = "key_username";
-    private static String KEY_EMAIL = "key_email";
     public static String KEY_MOBILE = "9999999999";
-    private static String IS_LOGIN = "IsLogedIn";
     public static String KEY_NO = "PURPLE";
     public static String KET_PROFILE_PHOTO = "";
     public static String KEY_TOKEN = "token";
     public static String LANGUAGES = "English";
     public static String JSON_OBJECT = "json";
     public static String IS_SUBSCRIBE = "is_subscribe";
+    private static String KEY_USERNAME = "key_username";
+    private static String KEY_EMAIL = "key_email";
+    private static String IS_LOGIN = "IsLogedIn";
+    private SharedPreferences pref;
+    private Editor editor;
+    private FragmentActivity context;
+    private int PRIVATE_MODE = 0;
 
     public SessionManager(FragmentActivity context) {
         this.context = context;
         this.pref = context.getSharedPreferences(KEY_NO, PRIVATE_MODE);
         this.editor = pref.edit();
-    }
-
-    public void createLoginSession(String details) {
-
-
-        editor.putBoolean(IS_LOGIN, true);
-        editor.putString(JSON_OBJECT, "");
-        editor.commit();
-
-    }
-
-
-    public void createLoginSession(UserDetails details, boolean isSubscribe) {
-
-        Gson gson = new Gson();
-        String json = gson.toJson(details);
-        editor.putBoolean(IS_LOGIN, true);
-        editor.putString(JSON_OBJECT, json);
-        editor.putBoolean(IS_SUBSCRIBE, isSubscribe);
-        editor.commit();
-
     }
 
     public static boolean isSubscribe(FragmentActivity fragmentActivity) {
@@ -73,7 +48,6 @@ public class SessionManager {
         editor.commit();
     }
 
-
     public static void updateLoginSession(FragmentActivity context, UserDetails details) {
         SharedPreferences pref = context.getSharedPreferences(KEY_NO, 0);
         Editor editor = pref.edit();
@@ -85,21 +59,10 @@ public class SessionManager {
 
     }
 
-    public void setlanguages(String lang) {
-        editor.putString(LANGUAGES, lang);
-        editor.commit();
-    }
-
-    public boolean checkLogin() {
-        return this.isLoggedIn();
-
-    }
-
     public static String getToken(Context context) {
         SharedPreferences pref = context.getSharedPreferences(KEY_NO, 0);
         return pref.getString(KEY_TOKEN, KEY_TOKEN);
     }
-
 
     public static String getMobile(Context context) {
         SharedPreferences pref = context.getSharedPreferences(KEY_NO, 0);
@@ -110,7 +73,6 @@ public class SessionManager {
         SharedPreferences pref = context.getSharedPreferences(KEY_NO, 0);
         return pref.getString(KEY_ID, KEY_ID);
     }
-
 
     public static String getEmailId(Context context) {
         SharedPreferences pref = context.getSharedPreferences(KEY_NO, 0);
@@ -148,7 +110,6 @@ public class SessionManager {
         fragmentActivity.finish();
     }
 
-
     public static void upDateProfileImage(String photo, Context context) {
         SharedPreferences pref = context.getSharedPreferences(KEY_NO, 0);
         Editor editor = pref.edit();
@@ -156,6 +117,33 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void createLoginSession(String details) {
+
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(JSON_OBJECT, "");
+        editor.commit();
+
+    }
+
+    public void createLoginSession(UserDetails details) {
+
+        Gson gson = new Gson();
+        String json = gson.toJson(details);
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(JSON_OBJECT, json);
+        editor.commit();
+
+    }
+
+    public void setlanguages(String lang) {
+        editor.putString(LANGUAGES, lang);
+        editor.commit();
+    }
+
+    public boolean checkLogin() {
+        return this.isLoggedIn();
+
+    }
 
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);

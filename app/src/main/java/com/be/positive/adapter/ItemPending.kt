@@ -10,9 +10,7 @@ import com.kirana.merchant.R
 class ItemPending(val activity: FragmentActivity, val listOfGrids: Int) :
     RecyclerView.Adapter<ItemPending.ViewHolderProducts>() {
 
-    class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderProducts {
         return ViewHolderProducts(
@@ -30,6 +28,6 @@ class ItemPending(val activity: FragmentActivity, val listOfGrids: Int) :
 
     override fun onBindViewHolder(holder: ViewHolderProducts, position: Int) {
 
-      
+
     }
 }

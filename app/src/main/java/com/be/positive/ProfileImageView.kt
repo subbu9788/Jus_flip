@@ -3,9 +3,9 @@ package com.be.positive
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Window
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.be.positive.utils.ImageUtils
 import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.image_viewer.*

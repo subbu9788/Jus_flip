@@ -1,18 +1,19 @@
 package com.be.positive.adapter
 
-import android.util.Log
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.be.positive.model.CategoryDetailsItem
+import com.be.positive.ui.home.HomeFragment.Companion.categoryName
+import com.be.positive.utils.ImageUtils
 import com.kirana.merchant.R
-import com.be.positive.model.home.ModelHomeGrid
 import kotlinx.android.synthetic.main.item_product.view.*
-import java.lang.Exception
 
-class ItemProductList(val activity: FragmentActivity, val listOfGrids: ArrayList<ModelHomeGrid>) :
+class ItemProductList(val activity: FragmentActivity, val listOfGrids: List<CategoryDetailsItem>) :
     RecyclerView.Adapter<ItemProductList.ViewHolderProducts>() {
 
     class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,13 +37,14 @@ class ItemProductList(val activity: FragmentActivity, val listOfGrids: ArrayList
     }
 
     override fun onBindViewHolder(holder: ViewHolderProducts, position: Int) {
-        holder.itemProductName.text = listOfGrids[position].name
-        holder.icon.setImageResource(listOfGrids[position].icon)
+        holder.itemProductName.text = listOfGrids[position].categoryName
+        ImageUtils.setImageLive(holder.icon, listOfGrids[position].categoryImage, activity)
         holder.itemProductLay.setOnClickListener {
             try {
-                // Navigation.createNavigateOnClickListener(R.id.action_dashboard_after_login)
-                Log.d("lsdkjfslkdj", "clicked")
-                it.findNavController().navigate(R.id.action_sub_category_from_product_list)
+                categoryName=listOfGrids[position].categoryName.toString()
+                val bundle = Bundle()
+                bundle.putString("id", "" + listOfGrids[position].categoryId)
+                it.findNavController().navigate(R.id.action_sub_category_from_product_list, bundle)
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }

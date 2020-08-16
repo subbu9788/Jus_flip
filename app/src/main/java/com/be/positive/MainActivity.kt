@@ -46,7 +46,7 @@ class MainActivity : BaseActivity(), FragmentListener {
             val headerTitle = view.headerTitle
             val textView = view.textView
             if (sessionManager.isLoggedIn) {
-                headerTitle.text = SessionManager.getObject(activity).advocateName
+                headerTitle.text = SessionManager.getObject(activity).name
                 textView.text = SessionManager.getObject(activity).email
                 ImageUtils.setImageLive(imageView, "llasdjklkf", activity)
             } else {
@@ -131,13 +131,13 @@ class MainActivity : BaseActivity(), FragmentListener {
 
     fun navigationHide() {
         supportActionBar!!.hide()
-        drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 
     fun disableNavigation(title: String) {
         supportActionBar!!.show()
         toggle.isDrawerIndicatorEnabled = false
-        drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(false)

@@ -1,9 +1,9 @@
 package com.be.positive.api
 
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.Retrofit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class APIClient {
@@ -11,9 +11,8 @@ class APIClient {
     companion object {
 
         var retrofit: Retrofit? = null
-        //val URL = "http://192.168.10.117/court/court/public/"
-        val URL = "http://18.218.35.158/"
-        val BASE_URL = URL + "api/court/"
+        val URL = "http://sakthivision.com/Mobileapi/"
+        val BASE_URL = URL + "vision/Api_101/"
 
         fun getClient(): Retrofit {
             val interceptor = HttpLoggingInterceptor()

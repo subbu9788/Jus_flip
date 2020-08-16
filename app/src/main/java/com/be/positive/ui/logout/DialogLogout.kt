@@ -1,5 +1,6 @@
 package com.rcd.driver.ui.logout
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.be.positive.utils.SessionManager
 import com.kirana.merchant.R
-
-
 import kotlinx.android.synthetic.main.dialog_logout.*
-
-import java.lang.Exception
 
 class DialogLogout : DialogFragment() {
 

@@ -5,21 +5,19 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
-import com.kirana.merchant.R
+import com.be.positive.MainActivity
 import com.be.positive.api.ReadWriteAPI
 import com.be.positive.model.ModelSuccess
 import com.be.positive.utils.MessageUtils
 import com.be.positive.utils.SessionManager
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.fragment_splash.*
 import okhttp3.ResponseBody
 import retrofit2.Response
-import java.lang.Exception
 
 
 class SplashFragment : Fragment(), ReadWriteAPI {
@@ -40,8 +38,7 @@ class SplashFragment : Fragment(), ReadWriteAPI {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //(activity as MainActivity).navigationHide()
-        (activity as AppCompatActivity).supportActionBar?.hide()
+        (activity as MainActivity).navigationHide()
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
@@ -49,9 +46,11 @@ class SplashFragment : Fragment(), ReadWriteAPI {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sessionManager = SessionManager(activity)
-
-        findNavController().navigate(R.id.action_check_login)
-        //findNavController().navigate(R.id.action_check_dashboard)
+        if (sessionManager!!.isLoggedIn) {
+            findNavController().navigate(R.id.action_check_dashboard)
+        } else {
+            findNavController().navigate(R.id.action_check_login)
+        }
         /*   txtSplash.setOnClickListener
            {
                //NavHostFragment.findNavController(this).navigate(R.id.nav_login)
@@ -65,32 +64,6 @@ class SplashFragment : Fragment(), ReadWriteAPI {
                        ).build()*/
                )
            }*/
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        /* if (sessionManager!!.isLoggedIn) {
-             val map = HashMap<String, String>()
-             map[ParamKey.USER_ID] = SessionManager.getObject(activity).id.toString()
-             APIConnector.callBasic(activity!!, map, this, ParamAPI.CHECK_SUBSCRIBE)
-         } else {
-             Thread(Runnable {
-                 Thread.sleep(1000)
-                 mHandler.post {
-                     if (sessionManager!!.isLoggedIn) {
-                         findNavController().navigate(R.id.action_check_dashboard)
-                     } else {
-                         findNavController().navigate(R.id.action_check_login)
-                         //findNavController().navigate(R.id.action_check_home)
-                     }
-                 }
-             }).start()
-         }*/
-        /*val map = HashMap<String, String>()
-        APIConnector.callBasic(activity!!, map, this, ParamAPI.CHECK_SUBSCRIBE)*/
-
-
     }
 
 

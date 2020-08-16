@@ -26,6 +26,7 @@ import com.be.positive.ProfileImageView
 import com.be.positive.api.APIClient
 import com.be.positive.api.APIInterface
 import com.be.positive.api.ParamKey
+import com.google.android.material.textfield.TextInputEditText
 import com.kirana.merchant.R
 import com.razorpay.Checkout
 import okhttp3.MediaType
@@ -39,6 +40,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import kotlin.collections.HashMap
 
 
 class Utils {
@@ -312,13 +314,13 @@ class Utils {
         }
 
         fun replace(str: String): String {
-            return str.replace(",", "");
+            return str.replace(",", "")
         }
 
         fun capitalize(capString: String): String {
             val capBuffer = StringBuffer()
             val capMatcher =
-                Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(capString);
+                Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(capString)
 
             try {
 
@@ -332,13 +334,13 @@ class Utils {
                 ex.printStackTrace()
             }
 
-            return capMatcher.appendTail(capBuffer).toString();
+            return capMatcher.appendTail(capBuffer).toString()
         }
 
         fun getFileSize(profilePic: String?): Double {
             val file = File(profilePic)
             // Get length of file in bytes
-            val fileSizeInBytes = file.length();
+            val fileSizeInBytes = file.length()
             // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
             val fileSizeInKB = fileSizeInBytes / 1024
             //  Convert the KB to MegaBytes (1 MB = 1024 KBytes)
@@ -435,7 +437,7 @@ class Utils {
         }
 
 
-        public fun getDateFromDatePicker(activity: FragmentActivity, textView: EditText) {
+        fun getDateFromDatePicker(activity: FragmentActivity, textView: TextInputEditText) {
             val c = Calendar.getInstance()
             val mYear = c.get(Calendar.YEAR)
             val mMonth = c.get(Calendar.MONTH)
@@ -465,7 +467,10 @@ class Utils {
             datePickerDialog.show()
         }
 
-        fun getTimeFromTimePicker(fragmentActivity: FragmentActivity?, textView: TextView) {
+        fun getTimeFromTimePicker(
+            fragmentActivity: FragmentActivity?,
+            textView: TextInputEditText
+        ) {
             val mcurrentTime = Calendar.getInstance()
             val hour = mcurrentTime[Calendar.HOUR_OF_DAY]
             val minute = mcurrentTime[Calendar.MINUTE]
@@ -491,7 +496,7 @@ class Utils {
                     if (minute < 10) {
                         mm_precede = "0"
                     }
-                    textView.text = "$hourOfDay:$mm_precede:$minute $AM_PM"
+                    textView.setText("$hourOfDay:$minute $AM_PM")
                     // textView.setText(selectedHour + ":" + selectedMinute);
                 }, hour, minute, false
             ) //Yes 24 hour time
@@ -499,18 +504,30 @@ class Utils {
             mTimePicker.show()
         }
 
+        fun getMapDefaultValues(requireActivity: FragmentActivity): HashMap<String, String> {
+            val map = HashMap<String, String>()
+            val session = SessionManager(requireActivity)
+            if (session.isLoggedIn) {
+                map[ParamKey.ID] = SessionManager.getObject(requireActivity).id.toString()
+            }
+            map[ParamKey.DEVICE_ID] = Build.MANUFACTURER + " " + Build.MODEL
+            map[ParamKey.DEVICE_TOKEN] = "firebase_token_test"
+            map[ParamKey.DEVICE_TYPE] = "+91"
+            return map
+        }
+
     }
 
     fun capitalize(capString: String): String {
-        val capBuffer = StringBuffer();
+        val capBuffer = StringBuffer()
         val capMatcher: Matcher =
-            Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(capString);
+            Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(capString)
         while (capMatcher.find()) {
             capMatcher.appendReplacement(
                 capBuffer,
                 capMatcher.group(1).toUpperCase() + capMatcher.group(2).toLowerCase()
-            );
+            )
         }
-        return capMatcher.appendTail(capBuffer).toString();
+        return capMatcher.appendTail(capBuffer).toString()
     }
 }

@@ -2,9 +2,9 @@ package com.be.positive.utils
 
 import android.view.View
 import androidx.fragment.app.FragmentActivity
+import com.be.positive.api.ParamKey
 import com.be.positive.ui.login.LoginFragment
 import com.be.positive.ui.register.RegisterFragment
-import com.be.positive.api.ParamKey
 import com.be.positive.ui.splash.SplashFragment.Companion.snackbar
 
 
@@ -13,7 +13,6 @@ import com.be.positive.ui.splash.SplashFragment.Companion.snackbar
  */
 
 class Validator {
-
 
     companion object {
 
@@ -32,8 +31,8 @@ class Validator {
                 map[ParamKey.EMAIL].toString(), Utils.EMAIL_PATTERN
             )
             return when {
-                map[ParamKey.ADVOCATE_NAME].toString().isEmpty() -> {
-                    activity.showSnackView("Advocate Name can't be empty", view)
+                map[ParamKey.NAME].toString().isEmpty() -> {
+                    activity.showSnackView("Name can't be empty", view)
                     false
                 }
                 map[ParamKey.EMAIL].toString().isEmpty() -> {
@@ -60,14 +59,29 @@ class Validator {
                     activity.showSnackView("Please enter valid 10 digit Mobile Number", view)
                     false
                 }
-                /*   map[ParamKey.DATE_OF_BIRTH].toString().isEmpty() -> {
-                       activity.showSnackView("Please Select your Date Of Birth", view)
-                       false
-                   }*/
+                map[ParamKey.PASSWORD].toString().isEmpty() -> {
+                    activity.showSnackView("Password can't be empty", view)
+                    false
+                }
+                map[ParamKey.CONFIRM_PASSWORD].toString().isEmpty() -> {
+                    activity.showSnackView("Confirm Password can't be empty", view)
+                    false
+                }
+                map[ParamKey.CONFIRM_PASSWORD].toString() != map[ParamKey.PASSWORD].toString() -> {
+                    activity.showSnackView("Password Not Matched", view)
+                    false
+                }
+                map[ParamKey.PINCODE].toString().isEmpty() -> {
+                    activity.showSnackView("Pincode can't be empty", view)
+                    false
+                }
+                map[ParamKey.PINCODE].toString().length != 6 -> {
+                    activity.showSnackView("Pincode must be 6 digits", view)
+                    false
+                }
                 else -> true
             }
         }
-
 
         /**
          * Reset Password Validation
@@ -80,25 +94,25 @@ class Validator {
         ): Boolean {
 
             val isValid = Utils.isValidInputFormat(
-                map[ParamKey.USER_NAME].toString(), Utils.EMAIL_PATTERN
+                map[ParamKey.MOBILE_NUMBER].toString(), Utils.EMAIL_PATTERN
             )
             return when {
                 map.size == 0 -> {
                     activity.showSnackView("Please Enter all Field", view)
                     false
                 }
-                map[ParamKey.USER_NAME].toString().isEmpty() -> {
-                    activity.showSnackView("Email ID can't be empty", view)
+                map[ParamKey.MOBILE_NUMBER].toString().isEmpty() -> {
+                    activity.showSnackView("Mobile Number can't be empty", view)
                     false
                 }
-                /*map[ParamKey.MOBILE_NUMBER].toString().length < 10 -> {
-                    showSnackView("Please enter 10 digit Mobile Number", loginSnackView)
+                map[ParamKey.MOBILE_NUMBER].toString().length < 10 -> {
+                    activity.showSnackView("Please enter 10 digit Mobile Number", view)
                     false
-                }*/
-                !isValid -> {
+                }
+                /*!isValid -> {
                     activity.showSnackView("Please enter valid Email ID", view)
                     false
-                }
+                }*/
                 map[ParamKey.PASSWORD].toString().isEmpty() -> {
                     activity.showSnackView("Password can't be empty", view)
                     false
@@ -109,8 +123,6 @@ class Validator {
                 }
                 else -> true
             }
-
-
         }
 
         /**
@@ -153,10 +165,38 @@ class Validator {
                     false
                 }
                 else -> true
+            }
+        }
 
+        fun validateBook(
+            map: HashMap<String, String>,
+            activity: FragmentActivity,
+            view: View?
+        ): Boolean {
+            return when {
+                map.size == 0 -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Please Enter all Field")
+                    false
+                }
+                map[ParamKey.DATE].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Select Date")
+                    false
+                }
+                map[ParamKey.TIME].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Select Time")
+                    false
+                }
+                map[ParamKey.REASON].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Enter your reason")
+                    false
+                }
+                else -> true
             }
 
         }
-
     }
 }
