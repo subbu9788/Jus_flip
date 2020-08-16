@@ -50,7 +50,8 @@ class SplashFragment : Fragment(), ReadWriteAPI {
         super.onViewCreated(view, savedInstanceState)
         sessionManager = SessionManager(activity)
 
-        findNavController().navigate(R.id.action_check_dashboard)
+        findNavController().navigate(R.id.action_check_login)
+        //findNavController().navigate(R.id.action_check_dashboard)
         /*   txtSplash.setOnClickListener
            {
                //NavHostFragment.findNavController(this).navigate(R.id.nav_login)

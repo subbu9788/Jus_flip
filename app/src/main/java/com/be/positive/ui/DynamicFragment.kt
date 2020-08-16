@@ -7,16 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.be.positive.BaseFragment
-import com.kirana.merchant.R
+import com.be.positive.MainActivity
 import com.be.positive.adapter.modelList.ItemProductModel
 import com.be.positive.model.home.ModelHomeGrid
+import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.fragment_dynamic_categroy.*
-
 
 class DynamicFragment : BaseFragment() {
 
     override fun getTitle(): String {
-        return "Dynamic"
+        return getString(R.string.products)
     }
 
     override fun getShowHomeToolbar(): Boolean {
@@ -37,6 +37,7 @@ class DynamicFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        (activity as MainActivity).disableNavigation(getString(R.string.products))
         return layoutInflater.inflate(R.layout.fragment_dynamic_categroy, container, false)
     }
 
@@ -48,21 +49,21 @@ class DynamicFragment : BaseFragment() {
         txtNoDynamic.visibility = View.GONE
 
         val listOfGrids = ArrayList<ModelHomeGrid>()
-        var modelHomeGrid = ModelHomeGrid("Smasung", R.drawable.l_samsung)
+        var modelHomeGrid = ModelHomeGrid("Model Name 1", R.drawable.l_samsung)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Sony", R.drawable.l_sony)
+        modelHomeGrid = ModelHomeGrid("Model Name 2", R.drawable.l_sony)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Nokia", R.drawable.l_nokia)
+        modelHomeGrid = ModelHomeGrid("Model Name 3", R.drawable.l_nokia)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Voltas", R.drawable.l_voltas)
+        modelHomeGrid = ModelHomeGrid("Model Name 4", R.drawable.l_voltas)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Mi", R.drawable.l_mi)
+        modelHomeGrid = ModelHomeGrid("Model Name 5", R.drawable.l_mi)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Moto", R.drawable.l_moto)
+        modelHomeGrid = ModelHomeGrid("Model Name 6", R.drawable.l_moto)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Havells", R.drawable.l_havells)
+        modelHomeGrid = ModelHomeGrid("Model Name 7", R.drawable.l_havells)
         listOfGrids.add(modelHomeGrid)
-        modelHomeGrid = ModelHomeGrid("Lloyd", R.drawable.l_lloyd)
+        modelHomeGrid = ModelHomeGrid("Model Name 8", R.drawable.l_lloyd)
         listOfGrids.add(modelHomeGrid)
 
         rcyDynamicList.layoutManager = LinearLayoutManager(requireActivity())

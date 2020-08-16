@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Template</string>
+    <string name="app_name">JusFlip</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -12,7 +12,9 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
-
+    <!--DrawerLayout-->
+    <string name="open_msg">open_msg</string>
+    <string name="close_msg">close_msg</string>
 
     <string name="no">No</string>
     <string name="yes">Yes</string>
@@ -40,9 +42,16 @@
     <string name="permission_storage_description">Storage permission is required for storage of video, images and access to images and videos from the selected folder.</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="profile">Profile</string>
     <string name="old_passwrod">Old Passwrod</string>
     <string name="new_password">New Password</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="pending_status">Pending Status</string>
+    <string name="processing_task">Processing Task</string>
+    <string name="completed_task">Completed Task</string>
+    <string name="completed">Completed</string>
+    <string name="products">Products</string>
+    <string name="logout">Logout</string>
 
 
     <string-array name="district">

@@ -1,29 +1,26 @@
 package com.be.positive.utils
 
+
 import android.app.ActivityOptions
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.net.Uri
-import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-
-
-import android.util.Log
-import android.util.Pair
-import android.view.View
-import android.widget.TextView
-import java.util.*
-import java.util.regex.Pattern
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Build
 import android.text.*
 import android.text.format.DateFormat
+import android.util.Log
+import android.util.Pair
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.be.positive.ProfileImageView
 import com.be.positive.api.APIClient
@@ -39,8 +36,9 @@ import java.io.File
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
+import java.util.*
 import java.util.regex.Matcher
-import kotlin.collections.HashMap
+import java.util.regex.Pattern
 
 
 class Utils {
@@ -218,7 +216,7 @@ class Utils {
             dayOfMonth: Int,
             monthOfYear: Int,
             year: Int,
-            format: String
+            formatSymbols: String
         ): String {
 
             val month = monthOfYear + 1
@@ -235,8 +233,7 @@ class Utils {
             } else {
                 month.toString()
             }
-            //Log.d("agesss", "$day/$monthStr/$year")
-            return "$day$format$monthStr$format$year"
+            return "$day$formatSymbols$monthStr$formatSymbols$year"
         }
 
         fun getAgeFromDOB(dayOfMonth: Int, monthOfYear: Int, year: Int): Int {

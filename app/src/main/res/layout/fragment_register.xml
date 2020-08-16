@@ -71,11 +71,13 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtRegAdvocateName"
                     style="@style/EditTextRegisterPage"
-                    android:hint="Advocate Name"
+                    android:hint=" Name"
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout style="@style/IPL">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/IPL"
+                android:visibility="gone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtRegEntlNumber"
@@ -130,7 +132,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regAgentNumberCode"
                     style="@style/EditTextRegisterPage"
-                    android:hint="Agent Number Code" />
+                    android:hint="Agent Number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox

@@ -1,23 +1,13 @@
 package com.be.positive.ui.register
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_register.*
-import kotlinx.android.synthetic.main.submit_cancel_horizontal_view.*
-import okhttp3.ResponseBody
-import retrofit2.Response
-import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
-import com.be.positive.utils.Validator.Companion.validateRegister
-import com.google.gson.Gson
 import com.be.positive.BaseFragment
-import com.kirana.merchant.R
-import com.be.positive.api.APIConnector
-import com.be.positive.api.ParamAPI
-import com.be.positive.api.ParamKey
+import com.be.positive.MainActivity
 import com.be.positive.api.ReadWriteAPI
 import com.be.positive.model.login.ModelLoginSuccess
 import com.be.positive.ui.splash.SplashFragment.Companion.snackbar
@@ -25,9 +15,13 @@ import com.be.positive.utils.MessageUtils
 import com.be.positive.utils.SessionManager
 import com.be.positive.utils.Utils
 import com.be.positive.utils.Utils.Companion.DATE_PREFIX
-
+import com.google.gson.Gson
+import com.kirana.merchant.R
+import kotlinx.android.synthetic.main.fragment_register.*
+import kotlinx.android.synthetic.main.submit_cancel_horizontal_view.*
+import okhttp3.ResponseBody
+import retrofit2.Response
 import java.util.*
-import kotlin.collections.HashMap
 
 
 class RegisterFragment : BaseFragment(), ReadWriteAPI {
@@ -41,11 +35,7 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /* (activity as MainActivity).disableNavigation(getString(R.string.register))
-         registerViewModel =
-             ViewModelProviders.of(this).get(RegisterViewModel::class.java)*/
-        (activity as AppCompatActivity).supportActionBar?.show()
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as MainActivity).disableNavigation(getString(R.string.register))
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
@@ -61,22 +51,22 @@ class RegisterFragment : BaseFragment(), ReadWriteAPI {
         edtDistrict.setOnClickListener { spDistrict.performClick() }
 
         btnSubmitInHorizontal.setOnClickListener {
-            val map = HashMap<String, String>()
-            map[ParamKey.ADVOCATE_NAME] = edtRegAdvocateName.text.toString()
-            map[ParamKey.MOBILE_NUMBER] = edtRegPhoneNumber.text.toString()
-            map[ParamKey.EMAIL] = edtRegEmailId.text.toString()
-            map[ParamKey.ENTROLMENT_NUMBER] = edtRegEntlNumber.text.toString()
-            map[ParamKey.ADDRESS] = regEdtAddress.text.toString()
-            map[ParamKey.DATE_OF_BIRTH] = regEdtDOB.text.toString()
-            map[ParamKey.AGENT_NUMBER_CODE] = regAgentNumberCode.text.toString()
+            /* val map = HashMap<String, String>()
+             map[ParamKey.ADVOCATE_NAME] = edtRegAdvocateName.text.toString()
+             map[ParamKey.MOBILE_NUMBER] = edtRegPhoneNumber.text.toString()
+             map[ParamKey.EMAIL] = edtRegEmailId.text.toString()
+             map[ParamKey.ENTROLMENT_NUMBER] = edtRegEntlNumber.text.toString()
+             map[ParamKey.ADDRESS] = regEdtAddress.text.toString()
+             map[ParamKey.DATE_OF_BIRTH] = regEdtDOB.text.toString()
+             map[ParamKey.AGENT_NUMBER_CODE] = regAgentNumberCode.text.toString()
 
-            if (validateRegister(this, registerSnackView, map)) {
-                if (chAgree.isChecked) {
-                    APIConnector.callBasic(activity!!, map, readWriteAPI!!, ParamAPI.REGISTER)
-                } else {
-                    showSnackView("Please Confirm Our Terms & Conditions", registerSnackView)
-                }
-            }
+             if (validateRegister(this, registerSnackView, map)) {
+                 if (chAgree.isChecked) {
+                     APIConnector.callBasic(activity!!, map, readWriteAPI!!, ParamAPI.REGISTER)
+                 } else {
+                     showSnackView("Please Confirm Our Terms & Conditions", registerSnackView)
+                 }
+             }*/
         }
 
         btnCancelInHorizontal.setOnClickListener {

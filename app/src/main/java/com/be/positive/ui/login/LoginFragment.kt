@@ -53,7 +53,7 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
         savedInstanceState: Bundle?
     ): View? {
         //(activity as MainActivity).navigationHide()
-        (activity as AppCompatActivity).supportActionBar?.show()
+        (activity as AppCompatActivity).supportActionBar?.hide()
         // (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 /*        requireActivity().window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -88,8 +88,8 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
 */
 
         btnLogin.setOnClickListener {
-
-            val mobileNumber = edtEmailID.text.toString().trim()
+            findNavController().navigate(R.id.action_dashboard_after_login)
+            /*val mobileNumber = edtEmailID.text.toString().trim()
             val password = edtPassword.text.toString().trim()
             val map = HashMap<String, String>()
             map[ParamKey.USER_NAME] = mobileNumber
@@ -98,9 +98,9 @@ class LoginFragment : Fragment(), ReadWriteAPI, UiUtils {
 
             if (validateLogin(this, loginSnackView, map)) {
                 APIConnector.callBasic(activity!!, map, apiReadWrite!!, LOGIN)
-                /*sessionMananger!!.createLoginSession("Subbu")
-                findNavController().navigate(R.id.action_home_after_login)*/
-            }
+                *//*sessionMananger!!.createLoginSession("Subbu")
+                findNavController().navigate(R.id.action_home_after_login)*//*
+            }*/
 
         }
         txtForgotPassword.setOnClickListener {

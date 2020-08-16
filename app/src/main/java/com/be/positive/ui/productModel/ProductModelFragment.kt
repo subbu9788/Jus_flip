@@ -4,37 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.tabs.TabLayout
 import com.be.positive.BaseFragment
-import com.kirana.merchant.R
+import com.be.positive.MainActivity
 import com.be.positive.adapter.pagerAdapter.PagerAdapter
 import com.be.positive.utils.NonSwipeableViewPager
+import com.google.android.material.tabs.TabLayout
+import com.kirana.merchant.R
 
 class ProductModelFragment : BaseFragment() {
-
-
-    private lateinit var galleryViewModel: ProductModelViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-            ViewModelProviders.of(this).get(ProductModelViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_product_model, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        (activity as MainActivity).disableNavigation(getString(R.string.products))
+        return inflater.inflate(R.layout.fragment_product_model, container, false)
     }
 
     override fun getTitle(): String {
-        return getString(R.string.app_name)
+        return getString(R.string.products)
     }
 
     override fun getShowHomeToolbar(): Boolean {
@@ -45,16 +34,17 @@ class ProductModelFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().title = "Category"
         val tabLayout = view.findViewById(R.id.tab_layout) as TabLayout
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.menu_home)))
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.app_name)))
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.menu_home)))
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.app_name)))
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.menu_home)))
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.app_name)))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 1"))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 2"))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 3"))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 4"))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 5"))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 6"))
+        tabLayout.addTab(tabLayout.newTab().setText("Brand Name 7"))
 
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
         val viewPager = view.findViewById(R.id.pager) as NonSwipeableViewPager
-        val adapter = PagerAdapter(requireActivity().supportFragmentManager, tabLayout.tabCount)
+        val adapter = PagerAdapter(childFragmentManager, tabLayout.tabCount)
         viewPager.adapter = adapter
         viewPager.currentItem = 0
 

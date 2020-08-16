@@ -8,6 +8,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorToast">#27AC05</color>
+    <color name="bgm">#e6e6e6</color>
     <color name="colorBlue">#1159D8</color>
     <color name="colorGreenLight">#08C708</color>
     <color name="colorRed">#c12a2a</color>
