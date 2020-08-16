@@ -4,6 +4,7 @@ class ParamKey {
 
     companion object {
 
+        const val TRAVEL_STATUS = "travel_status"
         const val REASON = "reason"
         const val DATE = "date"
         const val TIME = "time"
@@ -14,7 +15,7 @@ class ParamKey {
         const val BRAND_ID = "brand_id"
         const val ID = "id"
         const val DEVICE_ID = "device_id"
-        const val DEVICE_TOKEN = "device_token "
+        const val DEVICE_TOKEN = "device_token"
         const val DEVICE_TYPE = "device_type"
         const val ACTION = "action"
         const val SEEN = "seen"

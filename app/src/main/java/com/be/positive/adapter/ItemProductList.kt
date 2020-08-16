@@ -41,7 +41,7 @@ class ItemProductList(val activity: FragmentActivity, val listOfGrids: List<Cate
         ImageUtils.setImageLive(holder.icon, listOfGrids[position].categoryImage, activity)
         holder.itemProductLay.setOnClickListener {
             try {
-                categoryName=listOfGrids[position].categoryName.toString()
+                categoryName = listOfGrids[position].categoryName.toString()
                 val bundle = Bundle()
                 bundle.putString("id", "" + listOfGrids[position].categoryId)
                 it.findNavController().navigate(R.id.action_sub_category_from_product_list, bundle)

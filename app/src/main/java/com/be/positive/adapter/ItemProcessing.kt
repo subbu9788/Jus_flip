@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.be.positive.model.bookingService.DetailsItem
 import com.kirana.merchant.R
 
-class ItemProcessing(val activity: FragmentActivity, val listOfGrids: Int) :
+class ItemProcessing(val activity: FragmentActivity, val listOfGrids: List<DetailsItem>) :
     RecyclerView.Adapter<ItemProcessing.ViewHolderProducts>() {
 
     class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -23,11 +24,10 @@ class ItemProcessing(val activity: FragmentActivity, val listOfGrids: Int) :
     }
 
     override fun getItemCount(): Int {
-        return listOfGrids
+        return listOfGrids.size
     }
 
     override fun onBindViewHolder(holder: ViewHolderProducts, position: Int) {
-
 
     }
 }

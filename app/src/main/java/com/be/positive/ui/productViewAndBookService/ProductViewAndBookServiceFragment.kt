@@ -12,6 +12,7 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.navigation.fragment.findNavController
 import com.be.positive.BaseFragment
+import com.be.positive.MainActivity
 import com.be.positive.api.APIConnector
 import com.be.positive.api.ParamAPI
 import com.be.positive.api.ParamKey
@@ -29,7 +30,6 @@ import com.google.gson.Gson
 import com.kirana.merchant.R
 import kotlinx.android.synthetic.main.fragment_product_view_and_book_service.*
 import okhttp3.ResponseBody
-import okhttp3.internal.Util
 import retrofit2.Response
 import java.util.*
 
@@ -74,7 +74,7 @@ class ProductViewAndBookServiceFragment : BaseFragment(), DatePickerDialog.OnDat
             }
         }
         edtVisitDate.setOnClickListener {
-           Utils.getDateFromDatePicker(requireActivity(),edtVisitDate)
+            Utils.getDateFromDatePicker(requireActivity(), edtVisitDate)
             /* val calendar: Calendar = Calendar.getInstance()
             year = calendar.get(Calendar.YEAR)
             month = calendar.get(Calendar.MONTH)
@@ -85,7 +85,7 @@ class ProductViewAndBookServiceFragment : BaseFragment(), DatePickerDialog.OnDat
         }
         edtVisitTime.setOnClickListener {
 
-            Utils.getTimeFromTimePicker(requireActivity(),edtVisitTime)
+            Utils.getTimeFromTimePicker(requireActivity(), edtVisitTime)
             /*val timePickerDialog = TimePickerDialog(
                 requireActivity(),
                 this,
@@ -98,7 +98,7 @@ class ProductViewAndBookServiceFragment : BaseFragment(), DatePickerDialog.OnDat
     }
 
     override fun getTitle(): String {
-        return "Book"
+        return getString(R.string.booking)
     }
 
     override fun getShowHomeToolbar(): Boolean {
@@ -110,7 +110,7 @@ class ProductViewAndBookServiceFragment : BaseFragment(), DatePickerDialog.OnDat
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (activity as MainActivity).disableNavigation(getString(R.string.booking))
         return inflater.inflate(R.layout.fragment_product_view_and_book_service, container, false)
 
     }

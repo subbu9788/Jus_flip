@@ -92,7 +92,7 @@
     <fragment
         android:id="@+id/nav_product_view_and_book_service"
         android:name="com.be.positive.ui.productViewAndBookService.ProductViewAndBookServiceFragment"
-        android:label="Book"
+        android:label="@string/booking"
         tools:layout="@layout/fragment_product_view_and_book_service" />
 
     <fragment

@@ -18,6 +18,7 @@ import com.be.positive.model.DetailsItemBrand
 import com.be.positive.model.DetailsItemModel
 import com.be.positive.model.PojoBrand
 import com.be.positive.model.PojoModels
+import com.be.positive.ui.home.HomeFragment.Companion.categoryName
 import com.be.positive.utils.NonSwipeableViewPager
 import com.be.positive.utils.Utils
 import com.google.android.material.tabs.TabLayout
@@ -47,7 +48,6 @@ class ProductModelFragment : BaseFragment(), ReadWriteAPI {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         readWriteAPI = this
-        requireActivity().title = "Category"
         categoryId = requireArguments().getString("id").toString()
         val map = Utils.getMapDefaultValues(requireActivity())
         map[ParamKey.CATEGORY_ID] = "" + categoryId
@@ -55,14 +55,7 @@ class ProductModelFragment : BaseFragment(), ReadWriteAPI {
 
         tabLayout = view.findViewById(R.id.tab_layout) as TabLayout
 
-        /* tabLayout.addTab(tabLayout.newTab().setText("Brand Name 1"))
-         tabLayout.addTab(tabLayout.newTab().setText("Brand Name 2"))
-         tabLayout.addTab(tabLayout.newTab().setText("Brand Name 3"))
-         tabLayout.addTab(tabLayout.newTab().setText("Brand Name 4"))
-         tabLayout.addTab(tabLayout.newTab().setText("Brand Name 5"))
-         tabLayout.addTab(tabLayout.newTab().setText("Brand Name 6"))
-         tabLayout.addTab(tabLayout.newTab().setText("Brand Name 7"))
- */
+
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
         viewPager = view.findViewById(R.id.pager) as NonSwipeableViewPager
 
@@ -104,12 +97,13 @@ class ProductModelFragment : BaseFragment(), ReadWriteAPI {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as MainActivity).disableNavigation(getString(R.string.products))
+        (activity as MainActivity).disableNavigation(categoryName)
         return inflater.inflate(R.layout.fragment_product_model, container, false)
     }
 
     override fun getTitle(): String {
-        return getString(R.string.products)
+
+        return categoryName//getString(R.string.products)
     }
 
     override fun getShowHomeToolbar(): Boolean {

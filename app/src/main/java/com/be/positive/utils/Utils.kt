@@ -235,7 +235,7 @@ class Utils {
             } else {
                 month.toString()
             }
-            return "$day$formatSymbols$monthStr$formatSymbols$year"
+            return "$year$formatSymbols$monthStr$formatSymbols$day"
         }
 
         fun getAgeFromDOB(dayOfMonth: Int, monthOfYear: Int, year: Int): Int {

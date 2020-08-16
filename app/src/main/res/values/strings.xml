@@ -52,6 +52,7 @@
     <string name="completed">Completed</string>
     <string name="products">Products</string>
     <string name="logout">Logout</string>
+    <string name="booking">Booking</string>
 
 
     <string-array name="district">

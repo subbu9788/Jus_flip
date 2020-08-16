@@ -4,7 +4,10 @@ class ParamAPI {
 
     companion object {
 
-        const val BOOK = "book"
+        const val COMPLETED_REQUEST = "completed_bookings"
+        const val ASSIGN_REQUEST = "assigned_request"
+        const val BOOKING_REQUEST = "booking_request"
+        const val BOOK = "customer_booking"
         const val FORGOT_PASSWORD = "user_password_forgot"
         const val PROFILE = "profile"
         const val RESET_PASSWORD = "user_password_reset"
