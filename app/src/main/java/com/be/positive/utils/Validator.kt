@@ -198,5 +198,47 @@ class Validator {
             }
 
         }
+
+        fun validateProfile(
+            map: java.util.HashMap<String, String>,
+            activity: FragmentActivity,
+            view: View?
+        ): Boolean {
+            val isValidEmail = Utils.isValidInputFormat(
+                map[ParamKey.EMAIL].toString(), Utils.EMAIL_PATTERN
+            )
+            return when {
+                map.size == 0 -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Please Enter all Field")
+                    false
+                }
+                map[ParamKey.NAME].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Name can't be empty")
+                    false
+                }
+                map[ParamKey.EMAIL].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Email Id can't be empty")
+                    false
+                }
+                !isValidEmail -> {
+                    snackbar = MessageUtils.showSnackBar(activity, view, "Enter valid Email ID")
+                    false
+                }
+                map[ParamKey.ADDRESS].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Address can't be empty")
+                    false
+                }
+                map[ParamKey.PINCODE].toString().isEmpty() -> {
+                    snackbar =
+                        MessageUtils.showSnackBar(activity, view, "Pincode can't be empty")
+                    false
+                }
+                else -> true
+            }
+        }
     }
 }

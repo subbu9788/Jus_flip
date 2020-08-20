@@ -7,11 +7,16 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.be.positive.model.bookingService.DetailsItem
 import com.kirana.merchant.R
+import kotlinx.android.synthetic.main.item_completed_task.view.*
 
 class ItemProcessing(val activity: FragmentActivity, val listOfGrids: List<DetailsItem>) :
     RecyclerView.Adapter<ItemProcessing.ViewHolderProducts>() {
 
-    class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val txtVisitingDate = itemView.txtVisitingDate
+        val txtModelName = itemView.txtModelName
+        val txtReason = itemView.txtReason
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderProducts {
         return ViewHolderProducts(
@@ -28,6 +33,9 @@ class ItemProcessing(val activity: FragmentActivity, val listOfGrids: List<Detai
     }
 
     override fun onBindViewHolder(holder: ViewHolderProducts, position: Int) {
-
+        holder.txtModelName.text = listOfGrids[position].modelName
+        holder.txtReason.text = listOfGrids[position].reason
+        holder.txtVisitingDate.text =
+            listOfGrids[position].visitDate + " " + listOfGrids[position].visitTime
     }
 }

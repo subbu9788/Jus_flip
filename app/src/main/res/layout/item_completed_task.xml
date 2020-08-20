@@ -5,12 +5,41 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/shadow_login_layout">
+    android:background="@drawable/shadow_login_layout"
+    android:orientation="vertical">
+
 
     <TextView
+
+        android:id="@+id/txtModelName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:text="@string/app_name"
         android:textColor="@color/colorBlack" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text=""
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/txtVisitingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textColor="@color/colorBlack"
+            android:visibility="visible" />
+    </LinearLayout>
+
 </LinearLayout>

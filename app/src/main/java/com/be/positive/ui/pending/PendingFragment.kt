@@ -23,7 +23,9 @@ import retrofit2.Response
 class PendingFragment : BaseFragment(), ReadWriteAPI {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rcyPendingView.layoutManager = LinearLayoutManager(requireActivity())
+        val linearLayoutManager = LinearLayoutManager(requireActivity())
+//        linearLayoutManager.reverseLayout = true
+        rcyPendingView.layoutManager = linearLayoutManager
 
         val map = Utils.getMapDefaultValues(requireActivity())
         map[ParamKey.TRAVEL_STATUS] = "9"
@@ -56,7 +58,8 @@ class PendingFragment : BaseFragment(), ReadWriteAPI {
                 if (modelSuccess.details.size != 0) {
                     txtNoPending.visibility = View.GONE
                     rcyPendingView.visibility = View.VISIBLE
-                    rcyPendingView.adapter = ItemProcessing(requireActivity(), modelSuccess.details)
+                    //modelSuccess.details.reversed()
+                    rcyPendingView.adapter = ItemProcessing(requireActivity(), modelSuccess.details.reversed())
                 } else {
                     txtNoPending.visibility = View.VISIBLE
                     rcyPendingView.visibility = View.GONE
