@@ -1,6 +1,7 @@
 package com.be.positive.ui.profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,12 @@ class ProfileFragment : BaseFragment(), ReadWriteAPI {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Log.d(
+            "passwordsds",
+            "" + SessionManager.getObject(activity).mobileNumber + "  " + SessionManager.getObject(
+                activity
+            ).password
+        )
         getProfile()
 
         btnUpdate.setOnClickListener {

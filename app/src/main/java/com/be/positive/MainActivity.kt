@@ -32,8 +32,10 @@ class MainActivity : BaseActivity(), FragmentListener {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     companion object {
+
         lateinit var drawerLayout: DrawerLayout
         lateinit var navView: NavigationView
+
         //var bottomNavigation: BottomNavigationView? = null
         lateinit var navController: NavController
         lateinit var sessionManager: SessionManager

@@ -65,7 +65,7 @@
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:focusable">false</item>
-        <item name="android:text">@string/no_internet_connection</item>
+        <item name="android:text">""</item>
         <item name="android:clickable">false</item>
         <item name="android:longClickable">false</item>
         <item name="android:textStyle">bold</item>
