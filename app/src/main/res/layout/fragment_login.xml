@@ -27,14 +27,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:padding="16dp"
@@ -90,7 +88,7 @@
                         android:hint="Mobile Number"
                         android:inputType="number"
                         android:maxLength="10"
-                        android:text=""
+                        android:text="9600960010"
                         android:textColor="@color/colorBlack"
                         app:backgroundTint="@color/colorBlack" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +104,7 @@
                         style="@style/EditTextRegisterPage"
                         android:fontFamily="@font/roboto_slab"
                         android:hint="Enter Password"
-                        android:text=""
+                        android:text="123456"
                         android:textColor="@color/colorBlack"
                         app:backgroundTint="@color/colorBlack" />
                 </com.google.android.material.textfield.TextInputLayout>

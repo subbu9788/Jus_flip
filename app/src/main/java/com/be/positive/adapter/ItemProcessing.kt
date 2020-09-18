@@ -16,6 +16,7 @@ class ItemProcessing(val activity: FragmentActivity, val listOfGrids: List<Detai
         val txtVisitingDate = itemView.txtVisitingDate
         val txtModelName = itemView.txtModelName
         val txtReason = itemView.txtReason
+        val txtTechDetails = itemView.txtTechDetails
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderProducts {
@@ -35,6 +36,13 @@ class ItemProcessing(val activity: FragmentActivity, val listOfGrids: List<Detai
     override fun onBindViewHolder(holder: ViewHolderProducts, position: Int) {
         holder.txtModelName.text = listOfGrids[position].modelName
         holder.txtReason.text = listOfGrids[position].reason
+        if (listOfGrids[position].modelName.toString().isEmpty()) {
+            holder.txtTechDetails.text = "Tech Not Assigned"
+            holder.txtTechDetails.setTextColor(activity.resources.getColor(R.color.colorRed))
+        } else {
+            holder.txtTechDetails.setTextColor(activity.resources.getColor(R.color.colorBlack))
+            holder.txtTechDetails.text = listOfGrids[position].modelName.toString()
+        }
         holder.txtVisitingDate.text =
             listOfGrids[position].visitDate + " " + listOfGrids[position].visitTime
     }

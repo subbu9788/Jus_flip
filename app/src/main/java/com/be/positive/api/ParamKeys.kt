@@ -4,6 +4,9 @@ class ParamKey {
 
     companion object {
 
+        const val LAND_MARK = "landmark"
+        const val CATEGORY_NAME = "category_name"
+        const val BRAND_NAME = "brand_name"
         const val TRAVEL_STATUS = "travel_status"
         const val REASON = "reason"
         const val DATE = "date"

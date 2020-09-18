@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment(), ReadWriteAPI {
         text_home.visibility = View.GONE
         val map = Utils.getMapDefaultValues(requireActivity())
         APIConnector.callBasic(requireActivity(), map, this, ParamAPI.CATEGORY_LIST)
-        rcyHomeProductList.layoutManager = GridLayoutManager(activity, 3)
+        rcyHomeProductList.layoutManager = GridLayoutManager(activity, 2)
     }
 
     override fun onCreateView(
@@ -59,7 +59,7 @@ class HomeFragment : BaseFragment(), ReadWriteAPI {
                     text_home.visibility = View.GONE
                     rcyHomeProductList.visibility = View.VISIBLE
                     //rcyHomeProductList.layoutManager = LinearLayoutManager(requireActivity())
-                    rcyHomeProductList.layoutManager = GridLayoutManager(activity, 3)
+                    rcyHomeProductList.layoutManager = GridLayoutManager(activity, 2)
                     rcyHomeProductList.adapter =
                         ItemProductList(requireActivity(), modelSuccess.details)
                 } else {

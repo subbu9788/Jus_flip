@@ -10,7 +10,6 @@
 
 
     <TextView
-
         android:id="@+id/txtModelName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,4 +41,9 @@
             android:visibility="visible" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtTechDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
 </LinearLayout>

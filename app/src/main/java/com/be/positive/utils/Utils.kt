@@ -463,7 +463,7 @@ class Utils {
 
             //datePickerDialog.datePicker.minDate =
             // c.add(Calendar.YEAR, -18)
-            datePickerDialog.datePicker.maxDate = c.timeInMillis//System.currentTimeMillis()
+            datePickerDialog.datePicker.minDate = c.timeInMillis//System.currentTimeMillis()
             datePickerDialog.show()
         }
 

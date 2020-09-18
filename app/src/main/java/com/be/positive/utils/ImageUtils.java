@@ -50,7 +50,7 @@ public class ImageUtils {
     public static void setImage(ImageView image, String url, FragmentActivity activity) {
         Picasso.get()
                 .load(new File(url))
-                .placeholder(R.drawable.logo)
+                .placeholder(R.drawable.juzflip_logo)
                 .into(image);
     }
 
@@ -64,13 +64,13 @@ public class ImageUtils {
      */
     public static void setImageLive(ImageView image, String url, FragmentActivity activity) {
         Log.d("sdurl", "" + url);
-        Picasso.get().load(url).placeholder(R.drawable.logo).error(R.drawable.logo).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
+        Picasso.get().load(url).placeholder(R.drawable.juzflip_logo).error(R.drawable.juzflip_logo).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
     }
 
 
     public static void setImageLiveRealSize(ImageView image, String url, FragmentActivity activity) {
         Log.d("sdurl", "" + url);
-        Picasso.get().load(url).placeholder(R.drawable.logo).into(image);
+        Picasso.get().load(url).placeholder(R.drawable.juzflip_logo).into(image);
     }
 
     /**
