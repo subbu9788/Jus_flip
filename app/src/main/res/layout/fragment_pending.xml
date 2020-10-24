@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/txtNoPending"
         style="@style/NoDataTextView"
-        android:text="Pending Task Page"
+        android:text="Pending Page"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView

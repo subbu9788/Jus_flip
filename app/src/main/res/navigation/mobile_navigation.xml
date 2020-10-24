@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_splash"
-        android:name="com.be.positive.ui.splash.SplashFragment"
+        android:name="com.juzonce.customer.ui.splash.SplashFragment"
         tools:layout="@layout/fragment_splash">
 
         <action
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.be.positive.ui.login.LoginFragment"
+        android:name="com.juzonce.customer.ui.login.LoginFragmentNew"
         android:label="@string/login"
         tools:layout="@layout/fragment_login">
 
@@ -43,12 +43,12 @@
 
     <fragment
         android:id="@+id/nav_new_login"
-        android:name="com.be.positive.NewLoginFragment"
+        android:name="com.juzonce.customer.NewLoginFragment"
         tools:layout="@layout/activity_new_login" />
 
     <fragment
         android:id="@+id/nav_register"
-        android:name="com.be.positive.ui.register.RegisterFragment"
+        android:name="com.juzonce.customer.ui.register.RegisterFragment"
         android:label="@string/register"
         tools:layout="@layout/fragment_register">
 
@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.be.positive.ui.home.HomeFragment"
+        android:name="com.juzonce.customer.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
@@ -70,17 +70,31 @@
             app:destination="@id/nav_product_model"
             app:popUpTo="@+id/nav_home"
             app:popUpToInclusive="false" />
-
+        <action
+            android:id="@+id/action_pending_from_product_list"
+            app:destination="@id/nav_pending"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_inprogress_from_product_list"
+            app:destination="@id/nav_processing"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_completed_from_product_list"
+            app:destination="@id/nav_completed"
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.be.positive.ui.profile.ProfileFragment"
+        android:name="com.juzonce.customer.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/nav_product_model"
-        android:name="com.be.positive.ui.productModel.ProductModelFragment"
+        android:name="com.juzonce.customer.ui.productModel.ProductModelFragment"
         android:label="@string/booking"
         tools:layout="@layout/fragment_product_model">
 
@@ -91,25 +105,25 @@
 
     <fragment
         android:id="@+id/nav_product_view_and_book_service"
-        android:name="com.be.positive.ui.productViewAndBookService.ProductViewAndBookServiceFragment"
+        android:name="com.juzonce.customer.ui.productViewAndBookService.ProductViewAndBookServiceFragment"
         android:label="@string/booking"
         tools:layout="@layout/fragment_product_view_and_book_service" />
 
     <fragment
         android:id="@+id/nav_pending"
-        android:name="com.be.positive.ui.pending.PendingFragment"
-        android:label="Pending"
+        android:name="com.juzonce.customer.ui.pending.PendingFragment"
+        android:label="@string/pending_status"
         tools:layout="@layout/fragment_pending" />
 
     <fragment
         android:id="@+id/nav_processing"
-        android:name="com.be.positive.ui.processing.ProcessingFragment"
+        android:name="com.juzonce.customer.ui.processing.ProcessingFragment"
         android:label="Processing"
         tools:layout="@layout/fragment_processing" />
 
     <fragment
         android:id="@+id/nav_completed"
-        android:name="com.be.positive.ui.completed.CompletedFragment"
+        android:name="com.juzonce.customer.ui.completed.CompletedFragment"
         android:label="Completed"
         tools:layout="@layout/fragment_completed" />
 

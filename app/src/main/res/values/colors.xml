@@ -14,5 +14,6 @@
     <color name="colorRed">#c12a2a</color>
     <color name="colorGray">#646464</color>
     <color name="colorRejected">#FF1515</color>
+    <color name="colorDisable">#90FFFFFF</color>
     <color name="colorHint">#AAAAAA</color>
 </resources>

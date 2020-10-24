@@ -7,7 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="circle_radius_layout">12dp</dimen>
-    <dimen name="circle_radius">10dp</dimen>
+    <dimen name="circle_radius">8dp</dimen>
     <dimen name="image_button">40dp</dimen>
     <dimen name="dp_24">24dp</dimen>
     <dimen name="sp_24">24sp</dimen>
