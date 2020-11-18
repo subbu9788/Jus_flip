@@ -3,6 +3,7 @@ package com.juzonce.customer.api
 class ParamAPI {
 
     companion object {
+        const val SERVICE_TYPE_LIST="service_type_list"
         const val LOUGOUT = "user_logout"
         const val GET_CORE = "getcore_config"
         const val GENERATE_OTP = "generate_otp"

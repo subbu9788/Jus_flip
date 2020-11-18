@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.juzonce.customer.R
 import com.juzonce.customer.model.bookingService.DetailsItem
 import com.juzonce.customer.utils.MessageUtils
+import com.juzonce.customer.utils.Utils.Companion.addCommaSeparator
 import kotlinx.android.synthetic.main.dialog_internet.*
 import kotlinx.android.synthetic.main.dialog_title.*
 import kotlinx.android.synthetic.main.item_completed_task.view.*
@@ -61,7 +62,8 @@ class ItemProcessing(
                 listOfGrids[position].visitDate + " " + listOfGrids[position].visitTime
 
         if (menuName == "completed") {
-            holder.txtOTP.text = " $ " + listOfGrids[position].totalAmount
+            holder.txtOTP.text =
+                " ₹ " + addCommaSeparator(listOfGrids[position].totalAmount.toString())
             holder.txtOTP.visibility = View.VISIBLE
             holder.txtVisitingDate.visibility = View.GONE
         } else {

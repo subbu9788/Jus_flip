@@ -1,20 +1,24 @@
 package com.juzonce.customer.adapter
 
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.juzonce.customer.R
+import com.juzonce.customer.intefaceUtils.ProductItemClick
 import com.juzonce.customer.model.CategoryDetailsItem
+import com.juzonce.customer.ui.home.HomeFragment.Companion.categoryId
 import com.juzonce.customer.ui.home.HomeFragment.Companion.categoryName
 import com.juzonce.customer.utils.ImageUtils
 import kotlinx.android.synthetic.main.item_product.view.*
 
-class ItemProductList(val activity: FragmentActivity, val listOfGrids: List<CategoryDetailsItem>) :
+class ItemProductList(
+    val activity: FragmentActivity,
+    val listOfGrids: List<CategoryDetailsItem>,
+    val productItemClick: ProductItemClick
+) :
     RecyclerView.Adapter<ItemProductList.ViewHolderProducts>() {
 
     class ViewHolderProducts(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -52,10 +56,20 @@ class ItemProductList(val activity: FragmentActivity, val listOfGrids: List<Cate
             try {
                 if (listOfGrids[position].status == "1") {
                     categoryName = listOfGrids[position].categoryName.toString()
+                    categoryId = listOfGrids[position].categoryId.toString()
+
+/*
                     val bundle = Bundle()
                     bundle.putString("id", "" + listOfGrids[position].categoryId)
                     it.findNavController()
                         .navigate(R.id.action_sub_category_from_product_list, bundle)
+*/
+
+
+                    productItemClick.productClick(
+                        position,
+                        listOfGrids[position].categoryId.toString()
+                    )
                 } else {
                     Log.d("disableeded", "opop")
                 }
@@ -64,4 +78,5 @@ class ItemProductList(val activity: FragmentActivity, val listOfGrids: List<Cate
             }
         }
     }
+
 }

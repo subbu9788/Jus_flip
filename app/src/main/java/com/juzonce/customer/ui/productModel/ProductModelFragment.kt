@@ -1,6 +1,7 @@
 package com.juzonce.customer.ui.productModel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +45,7 @@ class ProductModelFragment : BaseFragment(), ReadWriteAPI {
         var brand_id = ""
         var brandName = ""
         var modelName = ""
-
+        var type = ""
         var detailsModels: ArrayList<DetailsItemModel> = ArrayList()
     }
 
@@ -52,22 +53,27 @@ class ProductModelFragment : BaseFragment(), ReadWriteAPI {
         super.onViewCreated(view, savedInstanceState)
         readWriteAPI = this
 
-        edtCategoryName.setText(categoryName)
         categoryId = requireArguments().getString("id").toString()
+        type = requireArguments().getString("type").toString()
         val map = Utils.getMapDefaultValues(requireActivity())
         map[ParamKey.CATEGORY_ID] = "" + categoryId
+        map[ParamKey.TYPE] = "" + type
+        Log.d("mapsd", "" + map)
         //APIConnector.callBasic(requireActivity(), map, this, ParamAPI.BRAND_LIST)
         btnJuzBook.animation = AnimationUtils.loadAnimation(requireActivity(), R.anim.shake)
         tabLayout = view.findViewById(R.id.tab_layout) as TabLayout
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
         viewPager = view.findViewById(R.id.pager) as NonSwipeableViewPager
 
+        edtServiceType.setText(type)
+        edtCategoryName.setText(categoryName)
+
         edtVisitDate.setOnClickListener {
             Utils.getDateFromDatePicker(requireActivity(), edtVisitDate)
         }
         btnJuzBook.setOnClickListener {
             try {
-                val map = Utils.getMapDefaultValues(requireActivity());
+                val map = Utils.getMapDefaultValues(requireActivity())
                 if (edtVisitDate.text.toString().isNotEmpty()) {
                     if (time.isNotEmpty()) {
                         map[ParamKey.DATE] = edtVisitDate.text.toString()
@@ -79,6 +85,8 @@ class ProductModelFragment : BaseFragment(), ReadWriteAPI {
                         map[ParamKey.REASON] = edtVisitReason.text.toString()
                         map[ParamKey.LAND_MARK] = edtLandmark.text.toString()
                         map[ParamKey.ADDRESS] = edtAddress.text.toString()
+                        map[ParamKey.REASON] = edtRemarks.text.toString()
+                        map[ParamKey.TYPE] = type
                         APIConnector.callBasic(requireActivity(), map, readWriteAPI, ParamAPI.BOOK)
 
                     } else {

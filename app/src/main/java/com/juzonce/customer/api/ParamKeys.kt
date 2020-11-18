@@ -4,6 +4,7 @@ class ParamKey {
 
     companion object {
 
+        const val TYPE = "type"
         const val LOGIN_NAME = "login_name"
         const val OTP = "otp"
         const val TITLE = "title"

@@ -1,4 +1,4 @@
-package com.rcd.driver.ui.logout
+package com.juzonce.customer.ui.logout
 
 
 import android.os.Bundle

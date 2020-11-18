@@ -33,7 +33,7 @@ import com.juzonce.customer.utils.ImageUtils
 import com.juzonce.customer.utils.MessageUtils
 import com.juzonce.customer.utils.SessionManager
 import com.juzonce.customer.utils.toolbar.FragmentListener
-import com.rcd.driver.ui.logout.DialogLogout
+import com.juzonce.customer.ui.logout.DialogLogout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*

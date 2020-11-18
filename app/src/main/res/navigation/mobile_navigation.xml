@@ -70,6 +70,7 @@
             app:destination="@id/nav_product_model"
             app:popUpTo="@+id/nav_home"
             app:popUpToInclusive="false" />
+
         <action
             android:id="@+id/action_pending_from_product_list"
             app:destination="@id/nav_pending"
@@ -129,7 +130,7 @@
 
     <dialog
         android:id="@+id/nav_logout"
-        android:name="com.rcd.driver.ui.logout.DialogLogout"
+        android:name="com.juzonce.customer.ui.logout.DialogLogout"
         android:label="Logout"
         app:popUpTo="@layout/fragment_home"
         tools:layout="@layout/dialog_logout">
@@ -141,4 +142,14 @@
 
     </dialog>
 
+    <dialog
+        android:id="@+id/nav_service_list"
+        android:name="com.juzonce.customer.utils.DialogService"
+        android:label="Service List"
+        app:popUpTo="@layout/fragment_home"
+        tools:layout="@layout/dialog_service_list">
+        <action
+            android:id="@+id/action_check_home_service_list"
+            app:destination="@id/nav_product_model" />
+    </dialog>
 </navigation>

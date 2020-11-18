@@ -65,7 +65,18 @@ class Utils {
         val D_FORMAL = "dd-MM-yyyy"
         val DATE_PREFIX = "-"
 
-
+        fun addCommaSeparator(view: String): String? {
+            var s: String? = null
+            try {
+                // The comma in the format specifier does the trick
+                s = String.format("%,d", view.toLong())
+            } catch (e: NumberFormatException) {
+                e.printStackTrace()
+            }
+            // Set s back to the view after temporarily removing the text change listener
+            return s
+        }
+        
         fun loadPrivacyPolicy(appCompatActivity: AppCompatActivity, url: String) {
             val builder = CustomTabsIntent.Builder()
             builder.setToolbarColor(ContextCompat.getColor(appCompatActivity, R.color.colorPrimary))

@@ -2,14 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/splash_screen_bar"
     android:orientation="vertical">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/shadow_login_layout"
+
         android:padding="8dp"
         android:scaleType="center"
         android:src="@drawable/logo" />
@@ -25,5 +25,5 @@
         android:text="@string/app_name"
         android:textAllCaps="true"
         android:textColor="@color/colorWhite"
-        android:visibility="visible" />
+        android:visibility="gone" />
 </FrameLayout>
